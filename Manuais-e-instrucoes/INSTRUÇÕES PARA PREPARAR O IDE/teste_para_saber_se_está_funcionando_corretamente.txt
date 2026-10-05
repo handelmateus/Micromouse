@@ -1,0 +1,11 @@
+things you need to test for the template:
+1. turn on and off al LEDs
+2. define behavous for button and test if the functions in button handler executes your code when triggered
+3. test if the LED display can display all type of variable such as integer, string, float, etc.
+4. test if buzzer works, test with different frequencies and duration.
+5. test if motors are spinning with different speed and direction when you input any PWM values from -999 to 999
+6. if printf() works with the FTDI board at certain baudrate by printing out the value of the variables you want
+7. test if the encoder values can be read and output from printf() for from both wheels.
+8. if the IR sensor can read properly, by calling the readSensor() function
+9. if the gyro can read properly by callin the readGyro function.
+

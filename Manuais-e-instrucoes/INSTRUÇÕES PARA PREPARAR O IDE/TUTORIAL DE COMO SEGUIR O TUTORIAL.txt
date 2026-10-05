@@ -1,0 +1,57 @@
+olar
+1. instalar isso é mt chato vou tentar fazer um passo a passo.
+	antes de tudo, siga esse negocio junto com o pdf de instalar esse negocio u.u
+	"Instalação e configuração do Eclipse com o Cross-compiler ARM.pdf"
+
+1.1 instale o eclipse-inst-win64.exe na pasta eclipse_micromouse, em C:/
+1.2 instale o gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe. Na pasta eclipse_micromouse tb
+    tem um mais novo, não instale o mais novo u.u
+    marque o trequinho de add path to variable
+1.3 instale o gnuarmeclipse-build-tools-win64-2.6-201507152002-setup.exe na mesma pasta
+    utilize as variaveis de ambiente de usuário (path), caso tenha duas lá no negocio de
+    variaveis de ambiente. é facil saber qual é pq no passo 2 vc add uma variavel, veja
+    qual das variaveis tem o seu caminho de instalação lá.
+1.4 siga o 4 do pdf
+
+2. criar um projeto u.u
+2.1 siga esse tutorial aq etc etc:
+	"Criação de um projeto ARM no Eclipse.pdf"
+
+3. jogar o projeto no micromouse
+
+3.1 teste pra ver se o micromouse tem driver instalado no seu pc (ligar em modo boot).
+3.2 se não instale o driver (STM bootloader driver)
+3.3 instale o driver amd64 (inferindo que seu pc é 64bits)
+3.4 a instalação é só de assinatura então vai ser só um piscar na tela (sim ele funcionou)
+3.5 aí vc testa o boot de novo (segurar o botão de boot depois apertar o reset) aí deve funcionar.
+
+4. depois disso siga o tutorial de automatização de gravação:
+	"Automatização da gravação via Bootloader-ARM USB (DFU) no Eclipse.pdf"
+
+5. agr vc vai usar o zadig pra sobrescrever o driver lá que vc assinou
+5.1 coloca o micromouse em modo boot
+5.2 abrir o zadig
+5.3 options > list all devices
+5.4 selecionar o stm32 bootloader
+5.5 trocar o driver por winUSB
+5.6 clicar em install driver. aí substitui o driver de assinatura do STM32 por algo utilizavel
+
+pronto ¯\_(:p)_/¯
+
+------------------------------------
+ATUALIZAÇÃO 2023 (PELO MENOS DEU CERTO PARA MIM)
+- Ao configurar o 'dfu-util' substituir a variável pelo caminho específico na parte do 'Working Directory'
+e pelo arquivo específico na parte 'Arguments'
+
+Exemplo:
+${project_loc}/Release =>> ${workspace_loc:/umart_lite_plus_teste}/Release
+
+-v -d 0483:df11 -a 0 -s 0x08000000 -D ${project_name}.bin =>> -v -d 0483:df11 -a 0 -s 0x08000000 -D umart_lite_plus_teste.bin
+
+
+
+
+
+
+
+//#include "usbd_def.h"
